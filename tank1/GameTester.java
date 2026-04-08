@@ -8,6 +8,7 @@ public class GameTester extends JFrame{
 
     final static Random randomness = new Random();
 
+    GameCanvas gameCanvas;
 
     public GameTester(){
         setSize(800, 800);
@@ -15,7 +16,7 @@ public class GameTester extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
 
-        GameCanvas gameCanvas = new GameCanvas();
+        gameCanvas = new GameCanvas();
 
         add(gameCanvas);
 
@@ -24,6 +25,7 @@ public class GameTester extends JFrame{
 
     public void startGame(){
         setVisible(true);
+        gameCanvas.startGame();
     }
 
     public static void main(String[] args) {

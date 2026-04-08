@@ -9,6 +9,8 @@ public class Bullet extends GameObject{
 
     // int width = 8, height = 5;
 
+    int velocityX = 20; 
+
     public int getWidth() {
         return width;
     }
@@ -25,5 +27,9 @@ public class Bullet extends GameObject{
 
         g2d.setColor(Color.GRAY);
         g2d.fill(new Rectangle(x, y, width, height));
+    }
+
+    public void update(){
+        this.x = this.x + velocityX;
     }
 }

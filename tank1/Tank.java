@@ -8,6 +8,8 @@ public class Tank extends GameObject{
 
     int turretWidth = 20, turretHeight = 10;
 
+    int velocityX = 5;
+
 
     public int getTurretHeight() {
         return turretHeight;
@@ -27,6 +29,9 @@ public class Tank extends GameObject{
         // this.height = height;
     }
 
+    public void update(){
+        this.x = this.x + velocityX;
+    }
 
     public int getHeight() {
         return height;

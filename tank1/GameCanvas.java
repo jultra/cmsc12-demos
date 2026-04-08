@@ -3,11 +3,15 @@ package tank1;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Color;
 
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
+
+import javax.swing.Timer;
 
 public class GameCanvas extends JPanel{
 
@@ -16,6 +20,8 @@ public class GameCanvas extends JPanel{
     ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
     ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
+
+    Timer gameLoop;
 
     public GameCanvas(){
         for(int i = 0; i < 10; i++){
@@ -29,7 +35,25 @@ public class GameCanvas extends JPanel{
                                 GameTester.randomness.nextInt(800)));
         }
 
+        // frame is 60 frame per sec, 1000 ms/60 ~ 16ms
+        gameLoop = new Timer(16, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // update the state of the gameobjects
+                // for each gameobject obj:
+                //        obj.update()
+                for(GameObject obj: gameObjects){
+                    obj.update();
+                }
+                // repaint()  
+                repaint();
+            }
+        });
 
+    }
+
+    public void startGame(){
+        gameLoop.start();
     }
 
     @Override
