@@ -3,6 +3,8 @@ package tank1;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 
 public class Tank extends GameObject{
 
@@ -30,6 +32,18 @@ public class Tank extends GameObject{
     }
 
     public void update(){
+
+        if(this.x + this.width + turretWidth > GameTester.GAME_WIDTH || this.x < 0){
+            velocityX *= -1;
+            this.x = this.x + velocityX;
+
+            if(velocityX > 0){
+                rotation = 0;
+            }else{
+                rotation = 180;
+            }
+        }
+
         this.x = this.x + velocityX;
     }
 
@@ -38,6 +52,15 @@ public class Tank extends GameObject{
     }
 
     public void draw(Graphics2D g2d){
+
+        AffineTransform oldTransform = g2d.getTransform();
+        
+        Rectangle2D bounds = getBounds();
+
+        double centerX = bounds.getCenterX();
+        double centerY = bounds.getCenterY();
+
+        g2d.rotate(Math.toRadians(rotation), centerX, centerY);
         
         g2d.setColor(Color.RED);
         // g2d.draw(new Rectangle(20, 20, 30, 20));
@@ -49,6 +72,13 @@ public class Tank extends GameObject{
                         getTurretWidth(), 
                         getTurretHeight()));
 
+
+        g2d.setTransform(oldTransform);
+
+    }
+
+    public Rectangle2D getBounds(){
+        return new Rectangle(x, y, width+turretWidth, height+turretHeight);
     }
 
     

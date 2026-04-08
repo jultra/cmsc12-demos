@@ -6,6 +6,9 @@ public abstract class GameObject {
 
     int x, y;
 
+    // in degrees 
+    int rotation = 0;
+
     public int getY() {
         return y;
     }

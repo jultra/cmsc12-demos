@@ -10,8 +10,11 @@ public class GameTester extends JFrame{
 
     GameCanvas gameCanvas;
 
+    final static int GAME_WIDTH = 800;
+    final static int GAME_HEIGHT = 800;
+
     public GameTester(){
-        setSize(800, 800);
+        setSize(GAME_WIDTH, GAME_HEIGHT);
         setTitle("Tank Battle Royale!");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
