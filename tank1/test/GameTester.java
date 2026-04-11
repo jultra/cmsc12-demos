@@ -1,17 +1,20 @@
-package tank1;
+package tank1.test;
 
 import java.util.Random;
 
 import javax.swing.JFrame;
 
+
+import tank1.core.GameCanvas;
+
 public class GameTester extends JFrame{
 
-    final static Random randomness = new Random();
+    public final static Random randomness = new Random();
 
     GameCanvas gameCanvas;
 
-    final static int GAME_WIDTH = 800;
-    final static int GAME_HEIGHT = 800;
+    public final static int GAME_WIDTH = 800;
+    public final static int GAME_HEIGHT = 800;
 
     public GameTester(){
         setSize(GAME_WIDTH, GAME_HEIGHT);

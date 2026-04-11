@@ -1,4 +1,4 @@
-package tank1;
+package tank1.core;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -8,10 +8,13 @@ import java.awt.event.ActionListener;
 import java.awt.Color;
 
 import java.util.ArrayList;
-
 import javax.swing.JPanel;
-
 import javax.swing.Timer;
+
+import tank1.entity.Tank;
+import tank1.entity.Bullet;
+import tank1.entity.GameObject;
+import tank1.test.GameTester;
 
 public class GameCanvas extends JPanel{
 
@@ -24,6 +27,10 @@ public class GameCanvas extends JPanel{
     Timer gameLoop;
 
     public GameCanvas(){
+
+        // TODO: why this? why does the gametester class holds a state object like randomness
+        // doesn't make sense, i think we should create separate gamestate class for that
+        // 
         for(int i = 0; i < 10; i++){
             gameObjects.add(new Tank(GameTester.randomness.nextInt(800),
                                 GameTester.randomness.nextInt(800),

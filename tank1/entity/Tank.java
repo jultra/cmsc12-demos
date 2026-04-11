@@ -1,10 +1,13 @@
-package tank1;
+package tank1.entity;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
+
+import tank1.test.GameTester;
+
 
 public class Tank extends GameObject{
 
@@ -33,6 +36,7 @@ public class Tank extends GameObject{
 
     public void update(){
 
+        // TODO: oops, why is the tank class accessing members of a test class!!???
         if(this.x + this.width + turretWidth > GameTester.GAME_WIDTH || this.x < 0){
             velocityX *= -1;
             this.x = this.x + velocityX;
